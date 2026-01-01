@@ -1,0 +1,7 @@
+/* Apply this formula to the 'Tasks' Slice for Staff Users Enforces that Staff only see their assigned work. */
+
+OR( USERROLE() = "Admin", [AssignedTo] = USEREMAIL() )
+
+/* Apply this to 'Contacts_Golden' Slice Ensures Staff only see contacts related to their tasks. */
+
+OR( USERROLE() = "Admin", IN([ContactID], SELECT(Tasks[ContactID], [AssignedTo] = USEREMAIL())) )
