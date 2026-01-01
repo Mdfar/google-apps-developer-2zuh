@@ -1,0 +1,7 @@
+/* Strict Task Closure Validation Applied to the 'Notes' column in the Tasks table. */
+
+IF( IN([Status], LIST("Done", "Skipped")), ISNOTBLANK([_THIS]), TRUE )
+
+/* Read-Only Audit Fields Applied to 'DoneBy' column. */
+
+ISBLANK([_THIS])
